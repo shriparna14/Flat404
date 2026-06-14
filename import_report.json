@@ -1,0 +1,300 @@
+{
+  "imported_at": "2026-06-14T17:24:52.296Z",
+  "filename": "expenses_export.csv",
+  "total_rows_processed": 42,
+  "imported_count": 39,
+  "discarded_count": 3,
+  "actions": [
+    {
+      "lineNo": 2,
+      "description": "February rent",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 48000 INR (₹48000 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 3,
+      "description": "Groceries BigBasket",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2340 INR (₹2340 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 4,
+      "description": "Wifi bill Feb",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1199 INR (₹1199 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 5,
+      "description": "Dinner at Marina Bites",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 3200 INR (₹3200 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 6,
+      "description": "dinner - marina bites",
+      "action": "DISCARDED",
+      "reason": "Discarded duplicate of Marina Bites dinner (Row 5)"
+    },
+    {
+      "lineNo": 7,
+      "description": "Electricity Feb",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1200 INR (₹1200 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Removed thousand comma separators"
+    },
+    {
+      "lineNo": 8,
+      "description": "Maid salary Feb",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 3000 INR (₹3000 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 9,
+      "description": "Movie night snacks",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 640 INR (₹640 INR) split equal among: Aisha, Rohan, Priya",
+      "reason": "Normalized casing format of names"
+    },
+    {
+      "lineNo": 10,
+      "description": "Cylinder refill",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 900 INR (₹900 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Rounded fractional amount to 2 decimal places"
+    },
+    {
+      "lineNo": 11,
+      "description": "Groceries DMart",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1875 INR (₹1875 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Resolved name nickname alias"
+    },
+    {
+      "lineNo": 12,
+      "description": "Aisha birthday cake",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1500 INR (₹1500 INR) split unequal among: Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 13,
+      "description": "House cleaning supplies",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 780 INR (₹780 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Assigned missing payer to Aisha. "
+    },
+    {
+      "lineNo": 14,
+      "description": "Rohan paid Aisha back",
+      "action": "IMPORTED_AS_SETTLEMENT",
+      "details": "Settlement of ₹5000 paid by Rohan to Aisha",
+      "reason": "Imported as peer settlement payment"
+    },
+    {
+      "lineNo": 15,
+      "description": "Pizza Friday",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1440 INR (₹1440 INR) split percentage among: Aisha, Rohan, Priya, Meera",
+      "reason": "Normalized split percentages to sum to 100%. "
+    },
+    {
+      "lineNo": 16,
+      "description": "March rent",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 48000 INR (₹48000 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 17,
+      "description": "Groceries BigBasket",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2810 INR (₹2810 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 18,
+      "description": "Wifi bill Mar",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1199 INR (₹1199 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 19,
+      "description": "Goa flights",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 32400 INR (₹32400 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 20,
+      "description": "Goa villa booking",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 540 USD (₹44820 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Converted USD to INR at rate 83.0. "
+    },
+    {
+      "lineNo": 21,
+      "description": "Beach shack lunch",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 84 USD (₹6972 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Converted USD to INR at rate 83.0. "
+    },
+    {
+      "lineNo": 22,
+      "description": "Scooter rentals",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 3600 INR (₹3600 INR) split share among: Aisha, Rohan, Priya, Dev",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 23,
+      "description": "Parasailing",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 150 USD (₹12450 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Converted USD to INR at rate 83.0. Excluded Kabir and transferred his share to Dev. "
+    },
+    {
+      "lineNo": 24,
+      "description": "Dinner at Thalassa",
+      "action": "DISCARDED",
+      "reason": "Discarded duplicate Thalassa Dinner logged by Aisha (noted as incorrect)"
+    },
+    {
+      "lineNo": 25,
+      "description": "Thalassa dinner",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2450 INR (₹2450 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 26,
+      "description": "Parasailing refund",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: -30 USD (₹-2490 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Converted USD to INR at rate 83.0. "
+    },
+    {
+      "lineNo": 27,
+      "description": "Airport cab",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1100 INR (₹1100 INR) split equal among: Aisha, Rohan, Priya, Dev",
+      "reason": "Normalized casing format of names"
+    },
+    {
+      "lineNo": 28,
+      "description": "Groceries DMart",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2105 INR (₹2105 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Set blank currency to INR"
+    },
+    {
+      "lineNo": 29,
+      "description": "Electricity Mar",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1450 INR (₹1450 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 30,
+      "description": "Maid salary Mar",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 3000 INR (₹3000 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 31,
+      "description": "Dinner order Swiggy",
+      "action": "DISCARDED",
+      "reason": "Discarded Swiggy order logged with amount 0 (counted twice earlier)"
+    },
+    {
+      "lineNo": 32,
+      "description": "Weekend brunch",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2200 INR (₹2200 INR) split percentage among: Aisha, Rohan, Priya, Meera",
+      "reason": "Normalized split percentages to sum to 100%. "
+    },
+    {
+      "lineNo": 33,
+      "description": "Meera farewell dinner",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 4800 INR (₹4800 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 34,
+      "description": "Deep cleaning service",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2500 INR (₹2500 INR) split equal among: Aisha, Rohan, Priya",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 35,
+      "description": "April rent",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 48000 INR (₹48000 INR) split share among: Aisha, Rohan, Priya",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 36,
+      "description": "Groceries BigBasket",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 2640 INR (₹2640 INR) split equal among: Aisha, Rohan, Priya, Meera",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 37,
+      "description": "Wifi bill Apr",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1199 INR (₹1199 INR) split equal among: Aisha, Rohan, Priya",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 38,
+      "description": "Sam deposit share",
+      "action": "IMPORTED_AS_SETTLEMENT",
+      "details": "Settlement of ₹15000 paid by Sam to Aisha",
+      "reason": "Imported as peer settlement payment"
+    },
+    {
+      "lineNo": 39,
+      "description": "Housewarming drinks",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 3100 INR (₹3100 INR) split equal among: Aisha, Rohan, Priya, Sam",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 40,
+      "description": "Electricity Apr",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1380 INR (₹1380 INR) split equal among: Aisha, Rohan, Priya, Sam",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 41,
+      "description": "Groceries DMart",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 1990 INR (₹1990 INR) split equal among: Aisha, Rohan, Priya, Sam",
+      "reason": "Ingested clean record"
+    },
+    {
+      "lineNo": 42,
+      "description": "Furniture for common room",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 12000 INR (₹12000 INR) split equal among: Aisha, Rohan, Priya, Sam",
+      "reason": "Ignored redundant split details for equal type"
+    },
+    {
+      "lineNo": 43,
+      "description": "Maid salary Apr",
+      "action": "IMPORTED_AS_EXPENSE",
+      "details": "Expense: 3000 INR (₹3000 INR) split equal among: Aisha, Rohan, Priya, Sam",
+      "reason": "Ingested clean record"
+    }
+  ]
+}
