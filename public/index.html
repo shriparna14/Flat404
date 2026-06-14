@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flat 404 — Shared Expenses Ledger</title>
+  <!-- Google Fonts Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+
+  <!-- ==========================================
+       LOGIN & REGISTRATION CONTAINER
+       ========================================== -->
+  <div id="auth-container" class="auth-page">
+    <div class="auth-card glass-panel">
+      <div class="auth-header">
+        <h1 class="logo-text">FLAT 404</h1>
+        <p class="subtitle">Shared Expense Management System</p>
+      </div>
+
+      <div class="auth-toggle">
+        <button id="toggle-login-btn" class="toggle-btn active">Sign In</button>
+        <button id="toggle-register-btn" class="toggle-btn">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form active">
+        <div class="form-group">
+          <label for="login-name">Flatmate Username</label>
+          <input type="text" id="login-name" required placeholder="e.g. Aisha">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form">
+        <div class="form-group">
+          <label for="register-name">Username (Name)</label>
+          <input type="text" id="register-name" required placeholder="e.g. Sam">
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email Address</label>
+          <input type="email" id="register-email" placeholder="e.g. sam@flat404.in">
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      </form>
+
+      <!-- Quick demo accounts -->
+      <div class="demo-logins">
+        <h4>Demo Accounts (Password: <code>flatmate123</code>)</h4>
+        <div class="demo-buttons">
+          <button class="demo-btn" data-name="Aisha">Aisha</button>
+          <button class="demo-btn" data-name="Rohan">Rohan</button>
+          <button class="demo-btn" data-name="Priya">Priya</button>
+          <button class="demo-btn" data-name="Meera">Meera</button>
+          <button class="demo-btn" data-name="Sam">Sam</button>
+          <button class="demo-btn" data-name="Dev">Dev</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MAIN APP CONTAINER
+       ========================================== -->
+  <div id="app-container" class="app-layout hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-wrapper">
+          <span class="logo-dot"></span>
+          <span class="logo-text">FLAT 404</span>
+        </div>
+        <span class="group-badge">Flat 404</span>
+      </div>
+
+      <nav class="sidebar-menu">
+        <button class="menu-item active" data-tab="dashboard">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Dashboard
+        </button>
+        <button class="menu-item" data-tab="expenses">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          Ledger & Expenses
+        </button>
+        <button class="menu-item" data-tab="import-wizard">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          CSV Import Wizard
+        </button>
+        <button class="menu-item" data-tab="timeline">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          Membership Timeline
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="profile-card">
+          <div class="profile-avatar" id="user-avatar">?</div>
+          <div class="profile-info">
+            <div class="profile-name" id="current-user-name">Loading...</div>
+            <div class="profile-role">Flatmate</div>
+          </div>
+          <button id="logout-btn" title="Sign Out" class="logout-action-btn">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.78 1.58l-1.42 1.42C18.2 7.52 19 9.66 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.34.8-4.48 2.64-6l-1.42-1.42C4.08 6.38 3 9.07 3 12c0 5 4 9 9 9s9-4 9-9c0-2.93-1.08-5.62-2.22-7.42z"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top header bar -->
+      <header class="content-header">
+        <div class="header-title-area">
+          <h2 id="tab-title">Dashboard</h2>
+          <p id="tab-subtitle">Welcome to your flatmate ledger overview.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary" id="btn-new-settlement">Log Settlement</button>
+          <button class="btn btn-primary" id="btn-new-expense">Log Expense</button>
+        </div>
+      </header>
+
+      <!-- Container for Dynamic Tab Panels -->
+      <div class="tab-panel-container">
+
+        <!-- ==========================================
+             TAB PANEL: DASHBOARD
+             ========================================== -->
+        <section id="panel-dashboard" class="tab-panel active">
+          <!-- Quick summary numbers -->
+          <div class="summary-cards-grid">
+            <div class="summary-card glass-panel">
+              <span class="card-label">Your Balance</span>
+              <span class="card-value" id="dash-user-balance">₹0.00</span>
+              <span class="card-status-pill" id="dash-user-status">Settled</span>
+            </div>
+            <div class="summary-card glass-panel">
+              <span class="card-label">Total Shared Expenses</span>
+              <span class="card-value" id="dash-total-expenses">₹0.00</span>
+              <span class="card-desc">All-time group spend</span>
+            </div>
+            <div class="summary-card glass-panel">
+              <span class="card-label">Active Members</span>
+              <span class="card-value" id="dash-active-members">0</span>
+              <span class="card-desc" id="dash-occupancy-info">Feb - Present</span>
+            </div>
+          </div>
+
+          <div class="dashboard-details-layout">
+            <!-- Aisha's Request: Who pays whom -->
+            <div class="dashboard-column glass-panel">
+              <div class="panel-header">
+                <h3>Aisha's View: Simplified Settlements</h3>
+                <span class="help-tooltip" title="Greedy debt minimization results">Simplified Paths</span>
+              </div>
+              <div class="debt-graph-container">
+                <ul id="simplified-settlements-list" class="settlement-paths-list">
+                  <!-- Dynamic entries: "Rohan owes Priya ₹2,300" with settle buttons -->
+                </ul>
+              </div>
+            </div>
+
+            <!-- Individual balance breakdowns -->
+            <div class="dashboard-column glass-panel">
+              <div class="panel-header">
+                <h3>Net Group Balances</h3>
+                <span class="help-tooltip" title="Total Paid - Total Owed + Direct Payments">Balance Ledger</span>
+              </div>
+              <div class="balances-breakdown-list" id="group-balances-list">
+                <!-- Dynamic grid of users and balances -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Rohan's Request: Detailed Ledger Audit -->
+          <div class="ledger-audit-section glass-panel">
+            <div class="panel-header flex-between">
+              <div>
+                <h3>Rohan's View: Personal Ledger Audit</h3>
+                <p class="subtitle">Select any member to audit every single split making up their balance (No magic numbers!)</p>
+              </div>
+              <div class="select-wrapper">
+                <label for="audit-user-select" class="sr-only">Audit User</label>
+                <select id="audit-user-select" class="form-control select-dropdown">
+                  <!-- Selections dynamically loaded -->
+                </select>
+              </div>
+            </div>
+            
+            <div class="ledger-table-wrapper">
+              <table class="ledger-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Category/Description</th>
+                    <th>Who Paid</th>
+                    <th class="text-right">Total Amt</th>
+                    <th class="text-right">Your Share</th>
+                    <th>Impact on Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger-audit-tbody">
+                  <!-- Loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB PANEL: LEDGER & EXPENSES
+             ========================================== -->
+        <section id="panel-expenses" class="tab-panel">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <h3>All History (Expenses & Settlements)</h3>
+            </div>
+            <div class="ledger-table-wrapper">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Paid By</th>
+                    <th class="text-right">Amount (Original)</th>
+                    <th class="text-right">Amount (INR)</th>
+                    <th>Split Type</th>
+                    <th>Participants</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="expenses-history-tbody">
+                  <!-- Loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB PANEL: CSV IMPORT WIZARD
+             ========================================== -->
+        <section id="panel-import-wizard" class="tab-panel">
+          
+          <!-- STEP 1: UPLOAD FILE -->
+          <div id="import-step-1" class="import-step active glass-panel">
+            <div class="wizard-progress">
+              <div class="step-indicator active">1. Upload CSV</div>
+              <div class="step-connector"></div>
+              <div class="step-indicator">2. Resolve Anomalies</div>
+              <div class="step-connector"></div>
+              <div class="step-indicator">3. Final Report</div>
+            </div>
+
+            <div class="upload-dropzone" id="csv-dropzone">
+              <svg class="upload-icon" viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+              <h3>Drag and drop <code>expenses_export.csv</code> here</h3>
+              <p>Or click to select file from your system</p>
+              <input type="file" id="csv-file-input" accept=".csv" style="display:none">
+            </div>
+            <div class="import-info-box">
+              <strong>Evaluation Note:</strong> Upload the raw, unmodified CSV exactly as exported. The app will detect the 12+ deliberate data anomalies (duplicates, formatted amounts, timezone conflicts, lowercase names, wrong currencies, guest splits, percentage offsets, Meera's timeline, Sam's timeline, etc.) and let you review the fixes.
+            </div>
+          </div>
+
+          <!-- STEP 2: RESOLVE ANOMALIES -->
+          <div id="import-step-2" class="import-step glass-panel">
+            <div class="wizard-progress">
+              <div class="step-indicator done">1. Upload CSV</div>
+              <div class="step-connector active"></div>
+              <div class="step-indicator active">2. Resolve Anomalies</div>
+              <div class="step-connector"></div>
+              <div class="step-indicator">3. Final Report</div>
+            </div>
+
+            <div class="anomalies-header">
+              <div class="anomalies-count-badge" id="anomalies-count-label">0 Anomalies Detected</div>
+              <h2>Review and Approve Smart Fixes</h2>
+              <p class="subtitle">The app analyzed the CSV and found the following problems. Confirm or adjust the resolution policies below (Meera's review module):</p>
+            </div>
+
+            <!-- List of anomalies to resolve -->
+            <div class="anomalies-list" id="anomalies-container">
+              <!-- Dynamically populated cards -->
+            </div>
+
+            <div class="anomalies-footer-actions">
+              <button class="btn btn-secondary" id="import-btn-cancel">Cancel Import</button>
+              <button class="btn btn-success" id="import-btn-commit">Confirm and Ingest Ledger</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: FINAL REPORT -->
+          <div id="import-step-3" class="import-step glass-panel">
+            <div class="wizard-progress">
+              <div class="step-indicator done">1. Upload CSV</div>
+              <div class="step-connector done"></div>
+              <div class="step-indicator done">2. Resolve Anomalies</div>
+              <div class="step-connector done"></div>
+              <div class="step-indicator active">3. Final Report</div>
+            </div>
+
+            <div class="import-success-banner">
+              <div class="success-icon">✓</div>
+              <h2>Spreadsheet Import Completed Successfully!</h2>
+              <p id="import-report-summary-text">Imported 0 records, discarded 0 duplicates.</p>
+            </div>
+
+            <div class="report-details-section">
+              <h3>Ingestion Log & Resolution Ledger</h3>
+              <p class="subtitle">The following actions were processed based on your approvals. This report is saved as <code>import_report.json</code> in the workspace.</p>
+              
+              <div class="ledger-table-wrapper" style="margin-top: 15px;">
+                <table class="report-table">
+                  <thead>
+                    <tr>
+                      <th>Line</th>
+                      <th>Original Expense Description</th>
+                      <th>Action Taken</th>
+                      <th>Calculated Details</th>
+                      <th>Resolution Rule Applied</th>
+                    </tr>
+                  </thead>
+                  <tbody id="import-report-tbody">
+                    <!-- Dynamic entries -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="anomalies-footer-actions">
+              <button class="btn btn-primary" id="import-btn-finish">Go to Dashboard</button>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==========================================
+             TAB PANEL: MEMBERSHIP TIMELINE
+             ========================================== -->
+        <section id="panel-timeline" class="tab-panel">
+          <div class="grid-2-col">
+            <!-- Timeline details -->
+            <div class="glass-panel">
+              <div class="panel-header">
+                <h3>Flatmate Timeline Details</h3>
+                <p class="subtitle">We track active dates to satisfy Sam's rule (no March utilities for April move-ins)</p>
+              </div>
+              <div class="timeline-visual-container" id="timeline-members-list">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+
+            <!-- Add/adjust timeline -->
+            <div class="glass-panel">
+              <div class="panel-header">
+                <h3>Update flatmate Timeline</h3>
+              </div>
+              <form id="timeline-form">
+                <div class="form-group">
+                  <label for="timeline-user-select">Select Flatmate</label>
+                  <select id="timeline-user-select" class="form-control" required>
+                    <!-- Loaded dynamically -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="timeline-joined-at">Joined Date</label>
+                  <input type="date" id="timeline-joined-at" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="timeline-left-at">Move Out Date (Optional)</label>
+                  <input type="date" id="timeline-left-at" class="form-control">
+                  <span class="help-text">Leave blank if currently active in flat.</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save Membership Timeline</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================
+       MODAL: LOG EXPENSE FORM
+       ========================================== -->
+  <div id="modal-expense" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <h3>Log Shared Expense</h3>
+        <button class="modal-close" id="btn-close-expense-modal">&times;</button>
+      </div>
+      <form id="expense-form">
+        <div class="form-group">
+          <label for="exp-description">Description</label>
+          <input type="text" id="exp-description" class="form-control" required placeholder="e.g. Electricity bill April">
+        </div>
+        <div class="grid-2-col">
+          <div class="form-group">
+            <label for="exp-amount">Amount</label>
+            <input type="number" step="any" id="exp-amount" class="form-control" required placeholder="0.00">
+          </div>
+          <div class="form-group">
+            <label for="exp-currency">Currency</label>
+            <select id="exp-currency" class="form-control">
+              <option value="INR">INR (₹)</option>
+              <option value="USD">USD ($)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2-col">
+          <div class="form-group">
+            <label for="exp-exchange-rate">Exchange Rate (INR per Unit)</label>
+            <input type="number" step="any" id="exp-exchange-rate" class="form-control" value="1" readonly>
+            <span class="help-text" id="exp-exchange-helper">1.0 for INR</span>
+          </div>
+          <div class="form-group">
+            <label for="exp-date">Expense Date</label>
+            <input type="date" id="exp-date" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exp-payer">Paid By</label>
+          <select id="exp-payer" class="form-control" required>
+            <!-- Loaded dynamically -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exp-split-type">Split Type</label>
+          <select id="exp-split-type" class="form-control" required>
+            <option value="equal">Split Equally</option>
+            <option value="share">Split by Shares</option>
+            <option value="percentage">Split by Percentages</option>
+            <option value="unequal">Split Unequally</option>
+          </select>
+        </div>
+
+        <!-- Dynamic Splits Inputs Checklists -->
+        <div class="form-group">
+          <label>Participants and Split Allocation</label>
+          <div id="split-participants-container" class="split-users-list">
+            <!-- Dynamic checklist -->
+          </div>
+          <div id="split-validation-warning" class="split-warning-msg hidden">
+            <!-- Dynamic validation warning -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exp-notes">Notes (Optional)</label>
+          <textarea id="exp-notes" class="form-control" rows="2" placeholder="Add additional details..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-expense">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-expense">Log Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: LOG SETTLEMENT FORM
+       ========================================== -->
+  <div id="modal-settlement" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <h3>Log Peer Settlement</h3>
+        <button class="modal-close" id="btn-close-settlement-modal">&times;</button>
+      </div>
+      <form id="settlement-form">
+        <div class="form-group">
+          <label for="set-payer">Who Paid</label>
+          <select id="set-payer" class="form-control" required>
+            <!-- Loaded dynamically -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="set-payee">Who was Paid (Receiver)</label>
+          <select id="set-payee" class="form-control" required>
+            <!-- Loaded dynamically -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="set-amount">Amount (INR)</label>
+          <input type="number" step="0.01" id="set-amount" class="form-control" required placeholder="0.00">
+        </div>
+        <div class="form-group">
+          <label for="set-date">Settlement Date</label>
+          <input type="date" id="set-date" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="set-notes">Notes (Optional)</label>
+          <input type="text" id="set-notes" class="form-control" placeholder="e.g. Bank transfer, GPay, cash">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-settlement">Cancel</button>
+          <button type="submit" class="btn btn-primary">Record Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Javascript SPA Controller -->
+  <script src="index.js" type="module"></script>
+</body>
+</html>
