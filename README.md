@@ -66,5 +66,3 @@ Here is how the system addresses each individual user requirement:
 
 ---
 
-## 🤖 AI Collaboration Details
-This application was developed in collaboration with **Antigravity**, Google DeepMind's agentic AI coding assistant, who acted as the primary developer under candidate supervision. See `AI_USAGE.md` for a full breakdown of prompts, code corrections, and validation sessions.
